@@ -2,110 +2,377 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    int currentFloor = 1;
 }
 
 <div class="text-center">
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
+                <h1 id="h1_current_floor"></h1>
+            </div>
+            <div class="col-4">
+                <h1 id="h1_destination_floor"></h1>
+            </div>
+            <div class="col-4">
+                <h1 id="h1_floor_calling"></h1>
+            </div>
+            <div class="col-4">
                 Elevator Simulator
                 <br />
                 <br />
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-warning">5</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-warning">4</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-warning">3</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-warning">2</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-warning">1</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                Inside Controller
-                <br />
-                <br />
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-primary">1</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-primary">2</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-primary">3</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-primary">4</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" style="padding: 10px">
-                        <button type="button" class="btn btn-outline-primary">5</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                Out Controller
-                <br />
-                <br />
                 @{
-                    if (currentFloor == 1) { 
+                    for(int i = 5; i >= 1; i--)
+                    {
                         <div class="row">
-                            <div class="col-12" style="padding: 10px">
-                                <button type="button" class="btn btn-outline-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-collapse" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8m7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0m-.5 11.707-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0z" />
-                                    </svg>
-                                </button>
+                            <div class="col-3">
+                                <button type="button" id="floor_@(i)" class="btn btn-outline-warning style_button_add" disabled>@(i)</button>
                             </div>
-                        </div>
-                    }
-                    else{
-                        <div class="row">
-                            <div class="col-12" style="padding: 10px">
-                                <button type="button" class="btn btn-outline-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12" style="padding: 10px">
-                                <button type="button" class="btn btn-outline-primary" style="padding: 10px">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
-                                    </svg>
-                                </button>
+                            <div class="col-9">
+                                <p id="status_elevator_@(i)" class="status_style"></p>
                             </div>
                         </div>
                     }
                 }
             </div>
+            <div class="col-4">
+                Inside Controller
+                <br />
+                <br />
+                @{
+                    for (int j = 1; j <= 5; j++)
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" id="floor_action_@(j)" class="btn btn-outline-primary style_button_add btn_floor" data-floor="@(j)">@(j)</button>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="col-4">
+                Out Controller
+                <br />
+                <br />
+                <select class="form-select form-select-sm" aria-label="Select floor" id="select_floor">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                </select>
+                <div class="row" id="show_call_button">
+                    <div class="col-12" style="padding: 10px">
+                        <button type="button" class="btn btn-outline-primary style_button_add" id="call_elevator_btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-collapse" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8m7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0m-.5 11.707-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="row" id="show_up_button">
+                    <div class="col-12" style="padding: 10px">
+                        <button type="button" class="btn btn-outline-primary style_button_add" id="up_btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="row" id="show_down_button">
+                    <div class="col-12" style="padding: 10px">
+                        <button type="button" class="btn btn-outline-primary style_button_add" id="down_btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-square" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 2.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+@section Scripts {
+    <script>
+        var currentFloor = 1;
+        var floorSelected = 1;
+        var currentButtonActive = 0;
+        var callingButton = 0;
+        var destinationFloor = 0;
+        var step = 0;
+        var msecond = 1000;
+
+        $(document).ready(function () {
+            $('.btn_floor').click(async function () {
+                step = 2;
+                destinationFloor = $(this).data('floor');
+                $('#h1_destination_floor').html('Destination Floor: ' + destinationFloor);
+                lockSettings();
+                await startSimulating();
+                step = 0;
+                lockSettings();
+            });
+
+            $('#select_floor').change(function () {
+                let bfloorSelected = floorSelected;
+                floorSelected = parseInt($(this).find(":selected").val());
+                $('#h1_floor_calling').html('Floor Calling: ' + floorSelected);
+                validateShowHideOutdoorController(floorSelected);
+            });
+
+            $('#call_elevator_btn').click(function() {
+                step = 1;
+                let status = $('#status_elevator_' + currentFloor).html();
+                lockSettings();
+            });
+
+            $('#up_btn').click(async function () {
+                let list;
+                step = 1;
+                $(this).addClass('current_button_active');
+                lockSettings();
+                await upButton(floorSelected).then(json => {
+                    list = json.listFloor;
+                });
+                $('.btn_floor').attr('disabled', 'disabled');
+                list.forEach(f => {
+                    $('#floor_action_' + f).removeAttr('disabled');
+                });
+            });
+
+            $('#down_btn').click(async function () {
+                let list;
+                step = 1;
+                $(this).addClass('current_button_active');
+                lockSettings();
+                await downButton(floorSelected).then(json => {
+                    list = json.listFloor;
+                });
+                $('.btn_floor').attr('disabled', 'disabled');
+                list.forEach(f => {
+                    $('#floor_action_' + f).removeAttr('disabled');
+                });
+            });
+
+            setStartValues();
+        });
+
+        function setStartValues() {
+            $('#h1_current_floor').html('Current Floor: ' + currentFloor);
+            $('#h1_destination_floor').html('Destination Floor: ' + destinationFloor);
+            $('#h1_floor_calling').html('Floor Calling: ' + floorSelected);
+            $('#floor_1').addClass('current_floor').removeAttr('disabled');
+            $('#floor_action_1').attr('disabled', 'disabled');
+            $('#status_elevator_1').html('Close');
+            for (i = 1; i <= 5; i++)
+                $('#floor_action_' + i).attr('disabled', 'disabled');
+            validateShowHideOutdoorController(floorSelected);
+        }
+        async function startSimulating() {
+            let callRequestResult = 0;
+            let moveRequestResult = 0;
+
+            await Promise.all([callElevator(currentFloor, floorSelected), moveElevator(floorSelected, destinationFloor)])
+                .then((resultados) => {
+                    callRequestResult = resultados[0].result;
+                    moveRequestResult = resultados[1].result;
+                })
+                .catch((error) => {
+                    console.log('Error', error);
+                });
+
+            await simulateCallElevator(callRequestResult);  
+            await delay(1000);
+            await simulateMoveElevator(moveRequestResult);
+        }
+        async function simulateCallElevator(movements) {
+            let cFloor = currentFloor;
+            $('#status_elevator_' + cFloor).html('Open');
+            await delay(msecond);
+            $('#status_elevator_' + cFloor).html('Close');
+            await delay(msecond);
+            $('#status_elevator_' + cFloor).html('Moving...');
+            await delay(msecond);
+
+            if(movements > 0) {
+                for (i = cFloor; i <= currentFloor + (movements); i++) {
+                    let prevFloor = i - 1;
+                    $('#status_elevator_' + prevFloor).html('');
+                    $('#floor_' + prevFloor).removeClass('current_floor').attr('disabled', 'disabled');
+                    $('#status_elevator_' + i).html('Moving...');
+                    $('#floor_' + i).removeAttr('disabled').addClass('current_floor');
+                    await delay(msecond);
+                }
+                let prev = (currentFloor - 1) + (movements);
+                $('#status_elevator_' + prev).html('');
+                $('#floor_' + prev).removeClass('current_floor').attr('disabled', 'disabled');
+            }
+            else if(movements < 0) {
+                for (i = cFloor; i >= currentFloor + (movements); i--) {
+                    let prevFloor = i + 1;
+                    $('#status_elevator_' + prevFloor).html('');
+                    $('#floor_' + prevFloor).removeClass('current_floor').attr('disabled', 'disabled');
+                    $('#status_elevator_' + i).html('Moving...');
+                    $('#floor_' + i).removeAttr('disabled').addClass('current_floor');
+                    await delay(msecond);
+                }
+                let prev = (currentFloor - 1) + (movements);
+                $('#status_elevator_' + prev).html('');
+                $('#floor_' + prev).removeClass('current_floor').attr('disabled', 'disabled');
+            }
+            let c = currentFloor + (movements);
+            await delay(msecond);
+            $('#floor_' + c).removeAttr('disabled').addClass('current_floor');
+            $('#status_elevator_' + c).html('Open');
+            await delay(msecond);
+            $('#status_elevator_' + c).html('Close');
+            $('#h1_current_floor').html('Current Floor: ' + c);
+            await delay(msecond);
+            currentFloor = floorSelected;   
+        }
+        async function simulateMoveElevator(movements) {
+            let cFloor = currentFloor;
+
+            if(movements > 0) {
+                for (i = cFloor; i <= currentFloor + (movements); i++) {
+                    let prevFloor = i - 1;
+                    $('#status_elevator_' + prevFloor).html('');
+                    $('#floor_' + prevFloor).removeClass('current_floor').attr('disabled', 'disabled');
+                    $('#status_elevator_' + i).html('Moving...');
+                    $('#floor_' + i).removeAttr('disabled').addClass('current_floor');
+                    await delay(msecond);
+                }
+            } 
+            else if(movements < 0){
+                for (i = cFloor; i >= currentFloor + (movements); i--) {
+                    let prevFloor = i + 1;
+                    $('#status_elevator_' + prevFloor).html('');
+                    $('#floor_' + prevFloor).removeClass('current_floor').attr('disabled', 'disabled');
+                    $('#status_elevator_' + i).html('Moving...');
+                    $('#floor_' + i).removeAttr('disabled').addClass('current_floor');
+                    await delay(msecond);
+                }
+            }
+            let c = currentFloor + (movements);
+            $('#status_elevator_' + c).html('Open');
+            await delay(msecond);
+            $('#status_elevator_' + c).html('Close');
+            $('#h1_current_floor').html('Current Floor: ' + c);
+            await delay(msecond);
+            currentFloor = destinationFloor;
+        }
+        function callElevator(cFloor, fRequest) {
+            let request = {
+                floorRequest: fRequest,
+                currentFloor: cFloor
+            };
+
+            return fetch('@Url.Action("CallElevator", "ElevatorOutdoor")', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(request)
+            }).then(response => response.json())
+              .then(data => data)
+              .catch(error => console.error('Error: ', error));
+        }
+        function moveElevator(cFloor, nFloor) {
+            let request = {
+                currentFloor: cFloor,
+                nextFloor: nFloor
+            };
+
+            return fetch('@Url.Action("MoveElevator", "ElevatorIndoor")', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(request)
+            }).then(response => response.json())
+              .then(data => data)
+              .catch(error => console.error('Error: ', error));
+        }
+        function upButton(f) {
+            let request = {
+                floorRequested: f
+            };
+
+            return fetch('@Url.Action("UpElevator", "ElevatorOutdoor")', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(request)
+            }).then(response => response.json())
+                .then(data => data)
+                .catch(error => console.error('Error: ', error));
+        }
+        function downButton(f) {
+            let request = {
+                floorRequested: f
+            };
+
+            return fetch('@Url.Action("DownElevator", "ElevatorOutdoor")', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(request)
+            }).then(response => response.json())
+                .then(data => data)
+                .catch(error => console.error('Error: ', error));
+        }
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        var statusRotation = (prevStatus) => {
+            if (currentFloor == floorSelected && prevStatus == 'Close')
+                return 'Open';
+            else if (currentFloor == floorSelected && prevStatus == 'Open')
+                return 'Close';
+            else
+                return 'Moving';
+        }
+        var validateShowHideOutdoorController = (fSelected) => {
+            if (fSelected == 1 || fSelected == 5) {
+                $('#show_call_button').show();
+                $('#show_up_button').hide();
+                $('#show_down_button').hide();
+            }
+            else {
+                $('#show_up_button').show();
+                $('#show_down_button').show();
+                $('#show_call_button').hide();
+            }
+        }
+        var lockSettings = () => {
+            switch(step) {
+                case 0:
+                    $('#select_floor').removeAttr('disabled');
+                    $('#floor_action_' + destinationFloor).removeClass('current_button_active');
+                    if (floorSelected == 1 || floorSelected == 5) {
+                        $('#call_elevator_btn').removeClass('current_button_active');
+                        $('#call_elevator_btn').removeAttr('disabled');
+                    }
+                    else {
+                        $('#up_btn').removeClass('current_button_active');
+                        $('#down_btn').removeClass('current_button_active');
+                        $('#up_btn').removeAttr('disabled');
+                        $('#down_btn').removeAttr('disabled');
+                    }
+                    break;
+                case 1:
+                    $('#select_floor').attr('disabled', 'disabled');
+                    if (floorSelected == 1 || floorSelected == 5) {
+                        $('#call_elevator_btn').addClass('current_button_active');
+                        $('#call_elevator_btn').attr('disabled', 'disabled');
+                    }
+                    else {
+                        $('#up_btn').attr('disabled', 'disabled');
+                        $('#down_btn').attr('disabled', 'disabled');
+                    }
+                    for (i = 1; i <= 5; i++)
+                        if(floorSelected != i)
+                            $('#floor_action_' + i).removeAttr('disabled');
+                    break;
+                case 2:
+                    $('#floor_action_' + destinationFloor).addClass('current_button_active');
+                    $('.btn_floor').attr('disabled', 'disabled');
+                    break;
+            }
+        }
+    </script>
+}

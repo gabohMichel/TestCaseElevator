@@ -16,3 +16,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.style_button_add {
+    margin: 10px!important;
+    font-size: 30px!important;
+}
+.current_floor {
+    color: #fff;
+    border-color: #ffc107;
+    background-color: #ffc107;
+}
+.current_button_active {
+    color: #fff !important;
+    border-color: #0d6efd !important;
+    background-color: #0d6efd !important;
+}
+.status_style {
+    text-align: left!important;
+    align-content: center!important;
+}
